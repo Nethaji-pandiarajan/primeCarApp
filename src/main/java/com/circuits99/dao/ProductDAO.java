@@ -275,6 +275,7 @@ public class ProductDAO {
 				car.setCarName(rs.getString("car_name"));
 				car.setPrice(rs.getLong("price"));
 				car.setUsed(rs.getBoolean("isUsed"));
+				car.setSolde(rs.getBoolean("isSolded"));
 				car.setImageBash64_1(rs.getString("image1"));
 				cars.add(car);
 			}
