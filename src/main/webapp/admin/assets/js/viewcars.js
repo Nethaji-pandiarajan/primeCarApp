@@ -67,9 +67,9 @@ $(function() {
 						$('td:eq(12)', row).html('Unsold');
 					}
 					$('td:eq(12)', row).css('color', 'White');
-					if(data.isUsed){
-						$('td:eq(15)', row).html('<input type="checkbox" class="single-checkbox" checked>');
-					}else{
+					if (data.isUsed) {
+						$('td:eq(15)', row).html('<input type="checkbox" id="'+data['id']+'" class="single-checkbox" checked>');
+					} else {
 						$('td:eq(15)', row).html('<input type="checkbox" class="single-checkbox">');
 					}
 				}
@@ -102,24 +102,30 @@ $(function() {
 			$('input.single-checkbox').on('click', function() {
 				var currentRow = $(this).closest("tr");
 				var data = $('#bootstrap-data-table-export').DataTable().row(currentRow).data();
+				$(this).addClass("check");
 				if ($('input.single-checkbox').filter(":checked").length > limit) {
 					this.checked = false;
+					$(this).removeClass("check")
 					alert("Only 6 cars can be select");
-				}else{
-					$(this).attr('id',data['id']);
+				} else {
+					if(data['isUsed'] && $(this).prop('checked')){
+						data['isUsed'] = false;
+					}
+					$(this).attr('id', data['id']);
 				}
 			});
-			$("button.saveDisplayCars").on('click',function(e){
+			$("button.saveDisplayCars").on('click', function(e) {
 				e.preventDefault();
 				let arr = [];
 				let val;
-    			$("input.single-checkbox:checked").each(function() {
+				$("input.single-checkbox.check").each(function() {
 					var currentRow = $(this).closest("tr");
 					var data = $('#bootstrap-data-table-export').DataTable().row(currentRow).data();
-					val = {id:$(this).attr('id'),isUsed:data['isUsed']};
-        			arr.push(val);
-    			});
-    			$.ajax({
+					val = { id: $(this).attr('id'), isUsed: data['isUsed'] };
+					arr.push(val);
+				});
+				if(arr.length != 0){
+					$.ajax({
 					url: "displaycars",
 					method: "POST",
 					data: {
@@ -127,9 +133,12 @@ $(function() {
 					},
 					success: function(data) {
 						console.log(data);
+					}, error: function(request) {
+						alert(request.responseText);
 					}
 				});
-    			console.log(arr);
+				}
+				console.log(arr);
 			});
 
 		}
