@@ -357,7 +357,7 @@ public class ProductDAO {
 			pst = con.prepareStatement(sql);
 			rs = pst.executeQuery();
 			if (rs.next()) {
-				count = rs.getInt("sold");
+				count = rs.getInt("total");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -3,7 +3,7 @@ $(function() {
 	//$("#form2").hide(1000);
 	//$("#form3").hide(1000);
 	$("#form2").fadeOut(1000);
-	$("#form3").fadeIn(1000);
+	$("#form3").fadeOut(1000);
 })
 function bindEvents() {
 	$("a.next1").on("click", function() {
