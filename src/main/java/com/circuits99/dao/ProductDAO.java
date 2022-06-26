@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import com.circuits99.model.Car;
 import com.circuits99.utils.ConnectionUtils;
@@ -241,13 +243,13 @@ public class ProductDAO {
 		return cars;
 	}
 
-	public void update(List<Car> cars) {
+	public void update(Map<Integer, Boolean> deatils) {
 		Connection con = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
 		try {
 			con = ConnectionUtils.createConnection();
-			pst = con.prepareStatement(buildUpdateQuery(cars));
+			pst = con.prepareStatement(buildUpdateQuery(deatils));
 			pst.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -285,19 +287,19 @@ public class ProductDAO {
 		return cars;
 	}
 
-	private String buildUpdateQuery(List<Car> cars) {
+	private String buildUpdateQuery(Map<Integer, Boolean> deatils) {
 		StringBuilder query1 = new StringBuilder();
 		StringBuilder query2 = new StringBuilder();
-		query1.append("update car_deatils set isUsed=data_table.isUsed from (values");
-		for (Car car : cars) {
-			query2.append("(" + car.getId() + "," + car.isUsed() + "),");
+		query1.append("update car_details set isUsed=data_table.isUsed from (values");
+		for (Entry<Integer, Boolean> entry : deatils.entrySet()) {
+			query2.append("(" + entry.getKey() + "," + entry.getValue() + "),");
 		}
-		query2.deleteCharAt(query1.length() - 1);
+		query2.delete(query2.length() - 1,query2.length());
 		query1.append(query2);
 		query1.append(")as data_table");
 		query1.append("(id,isUsed)");
-		query1.append("where");
-		query1.append("car_deatils.id = data_table.id");
+		query1.append(" where");
+		query1.append(" car_details.id = data_table.id");
 		return query1.toString();
 	}
 
