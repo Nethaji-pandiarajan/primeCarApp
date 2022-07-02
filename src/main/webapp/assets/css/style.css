@@ -172,9 +172,9 @@ p:last-child {
 }
 
 .optional-btn:hover {
-  background-color: #f53f85;
+  background-color: #fbb600;
   color: #ffffff;
-  border-color: #f53f85;
+  border-color: #fbb600;
 }
 
 /*section-title*/
@@ -2084,7 +2084,7 @@ About CSS
 .about-content .sub-title {
   display: block;
   margin-bottom: 8px;
-  color: #f53f85;
+  color: white;   
   font-weight: 600;
 }
 
@@ -2120,7 +2120,7 @@ About CSS
   top: 0;
   width: 35px;
   height: 35px;
-  background-color: #f53f85;
+  background-color: #fbb600;
   text-align: center;
   line-height: 35px;
   color: #ffffff;
@@ -2149,7 +2149,7 @@ About CSS
   left: 0;
   bottom: -1px;
   width: 50px;
-  background-color: #f53f85;
+  background-color: #fbb600;
   height: 1px;
 }
 
@@ -2168,7 +2168,7 @@ About CSS
 .about-text .features-list li {
   position: relative;
   margin-bottom: 13px;
-  color: #000000;
+  color: white;
   padding-left: 30px;
 }
 
@@ -2195,7 +2195,7 @@ About CSS
 }
 
 .about-text .features-list li:hover i {
-  background-color: #f53f85;
+  background-color: #fcb600;
   color: #ffffff;
 }
 
@@ -5256,7 +5256,7 @@ Testimonials CSS
   -webkit-box-shadow: 6px 5px 25px rgba(0, 0, 0, 0.06);
           box-shadow: 6px 5px 25px rgba(0, 0, 0, 0.06);
   margin-top: 0;
-  background-color: #f53f85;
+  background-color: #fbb600;
   -webkit-transition: 0.5s;
   transition: 0.5s;
   opacity: 1;
@@ -5405,11 +5405,11 @@ Blog CSS
 }
 
 .single-blog-post .post-content .details-btn:hover {
-  color: #f53f85;
+  color: #fbb600;
 }
 
 .single-blog-post .post-content .details-btn:hover::before {
-  background-color: #f53f85;
+  background-color: #fbb600;
 }
 
 .single-blog-post:hover .post-image img {
@@ -9857,7 +9857,7 @@ Contact CSS
   position: absolute;
   left: 0;
   top: 2px;
-  color: #f53f85;
+  color: #fbb600; 
   font-size: 20px;
 }
 
@@ -9880,8 +9880,8 @@ Contact CSS
   height: 1px;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  background-color: #f53f85;
-}
+  background-color: #fbb600; 
+  }
 
 .contact-info .contact-list li:last-child {
   margin-bottom: 0;
@@ -9921,7 +9921,7 @@ Contact CSS
   height: 30px;
   text-align: center;
   display: block;
-  color: #f53f85;
+  color: #fbb600; 
   background-color: #f4f4f4;
   font-size: 18px;
   position: relative;
@@ -9938,7 +9938,7 @@ Contact CSS
 }
 
 .contact-info .social li a:hover {
-  background-color: #f53f85;
+  background-color: #fbb600;
   color: #ffffff;
 }
 
@@ -10416,7 +10416,7 @@ Footer CSS
 }
 
 .lines .line:nth-child(3) {
-  margin-left: 25%;
+  margin-left: 22%;
 }
 
 .lines .line:nth-child(3)::after {
