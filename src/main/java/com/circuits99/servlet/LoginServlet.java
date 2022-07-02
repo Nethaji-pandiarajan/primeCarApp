@@ -5,12 +5,13 @@ import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 /**
@@ -34,8 +35,13 @@ public class LoginServlet extends HttpServlet {
 		String password = user.get("password").getAsString();
 		if(username != null && !username.isBlank() && password != null && !password.isBlank()) {
 			if(username.equals("admin")  && password.equals("Test@ab12")) {
+				HttpSession session = request.getSession();
+				session.setMaxInactiveInterval(60);
+				JsonObject value = new JsonObject();
 				response.setStatus(200);
-				out.print("Login Successfull");
+				value.addProperty("Message", "Login Successfull");
+				value.addProperty("id", session.getId());
+				out.print(value.toString());
 				out.flush();
 			}else {
 				response.setStatus(400);
